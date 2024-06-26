@@ -2,7 +2,7 @@
 
 fecha de realizacion : 
 
-![Untitled](Mimages/Untitled.png)
+![Untitled](images/Untitled.png)
 
 # Simuladro de lanzamiento de dados:
 
@@ -158,7 +158,7 @@ public class Main {
 
 tiene como salida lo siguiente : 
 
-![Untitled](Mimages/Untitled%201.png)
+![Untitled](images/Untitled%201.png)
 
 Creamos la siguiente prueba unitaria `LanzamientoDadosTest`
 
@@ -276,4 +276,4 @@ correos se envíen correctamente.
 
 Usando jacoco
 
-![Untitled](Mimages/Untitled%202.png)
+![Untitled](images/Untitled%202.png)
