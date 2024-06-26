@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  tower-defense:
+    image: tower-defense-game
+    container_name: tower-defense-container
+    networks:
+      - game-network
+    volumes:
+      - game-data:/app/data
+
+networks:
+  game-network:
+
+volumes:
+  game-data:

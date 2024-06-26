@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.TowerDefenseGameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-06-26T13:56:51" hostname="LAPTOP-662VNBS9" time="2.193">
+  <properties/>
+  <testcase name="testPlaceTower()" classname="org.example.TowerDefenseGameTest" time="2.193"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

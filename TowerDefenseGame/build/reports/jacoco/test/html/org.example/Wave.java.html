@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Wave.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pc-4</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">Wave.java</span></div><h1>Wave.java</h1><pre class="source lang-java linenums">package org.example;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Wave {
+    private List&lt;Enemy&gt; enemies;
+    private int waveNumber;
+
+<span class="nc" id="L10">    public Wave(int waveNumber) {</span>
+<span class="nc" id="L11">        this.waveNumber = waveNumber;</span>
+<span class="nc" id="L12">        this.enemies = generateEnemies(waveNumber);</span>
+<span class="nc" id="L13">    }</span>
+
+    private List&lt;Enemy&gt; generateEnemies(int waveNumber) {
+<span class="nc" id="L16">        List&lt;Enemy&gt; enemies = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L17">        EnemyFactory factory = new BasicEnemyFactory();</span>
+<span class="nc bnc" id="L18" title="All 2 branches missed.">        for (int i = 0; i &lt; waveNumber * 5; i++) {</span>
+<span class="nc" id="L19">            enemies.add(factory.createEnemy());</span>
+        }
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (waveNumber % 5 == 0) {</span>
+<span class="nc" id="L22">            factory = new BossEnemyFactory();</span>
+<span class="nc" id="L23">            enemies.add(factory.createEnemy());</span>
+        }
+<span class="nc" id="L25">        return enemies;</span>
+    }
+
+    public List&lt;Enemy&gt; spawnEnemies(Map map, Player player) {
+        // Inicializa la posiciÃ³n de los enemigos
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        for (Enemy enemy : enemies) {</span>
+<span class="nc" id="L31">            enemy.move(map.getGrid());</span>
+<span class="nc" id="L32">        }</span>
+<span class="nc" id="L33">        return enemies;</span>
+    }
+
+    public void moveEnemies(Map map, Player player) {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        for (Enemy enemy : enemies) {</span>
+<span class="nc" id="L38">            enemy.move(map.getGrid());</span>
+<span class="nc bnc" id="L39" title="All 4 branches missed.">            if (enemy.getX() == 2 &amp;&amp; enemy.getY() == 4) { // Base position (2, 4)</span>
+<span class="nc" id="L40">                player.deductBaseHealth(enemy.getSpeed());</span>
+            }
+<span class="nc" id="L42">        }</span>
+<span class="nc" id="L43">    }</span>
+
+    public boolean allEnemiesDefeated() {
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        for (Enemy enemy : enemies) {</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">            if (!enemy.isDefeated()) {</span>
+<span class="nc" id="L48">                return false;</span>
+            }
+<span class="nc" id="L50">        }</span>
+<span class="nc" id="L51">        return true;</span>
+    }
+
+    public List&lt;Enemy&gt; getEnemies() {
+<span class="nc" id="L55">        return enemies;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

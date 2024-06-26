@@ -1,0 +1,15 @@
+
+‰
+java:S1192"FDefine a constant instead of duplicating this literal "admin" 3 times.(¢Ô—Æ8°Ò»£ş1J$009cddd2-2ab1-4842-8b99-64ca0945be4b
+‰
+java:S2259."FA "NullPointerException" could be thrown; "authUser" is nullable here.(Ó´–¾8ÀÒ»£ş1J$031058b8-d6bc-4de2-9563-e9e5043a749f
+
+java:S2259:"FA "NullPointerException" could be thrown; "authUser" is nullable here.(¦ğ°ÿÿÿÿÿ8¿Ò»£ş1J$a5a4d976-a9ac-4276-a3be-e3e02dba8750
+m	java:S106'"+Replace this use of System.out by a logger.(ü¢ä¬8ÇÒ»£ş1J$57101d45-d11d-4228-b226-800f80fba63a
+r	java:S106)"+Replace this use of System.out by a logger.(ıøû²ùÿÿÿÿ8ÇÒ»£ş1J$284e597b-d5da-40bc-88d2-b5b7e92c6818
+r	java:S106+"+Replace this use of System.out by a logger.(Õ·ö™øÿÿÿÿ8ÇÒ»£ş1J$85ed1a64-7099-47e6-8c30-faec64019c4b
+m	java:S106."+Replace this use of System.out by a logger.(Ó´–¾8ÈÒ»£ş1J$f0f8a1cc-4c6e-4d77-816a-9bf19088472a
+m	java:S1063"+Replace this use of System.out by a logger.(ü¢ä¬8ÈÒ»£ş1J$fb6ac4bc-2449-483e-bb4b-f9ea85eb9cce
+m	java:S1065"+Replace this use of System.out by a logger.(¦ÀÎË8ÉÒ»£ş1J$668c48b7-4bb8-4788-b090-4986d3947338
+l	java:S1067"+Replace this use of System.out by a logger.(ÀæéU8ÉÒ»£ş1J$51bc2c9b-3125-4a42-9bbf-6bfc582b07bd
+r	java:S106:"+Replace this use of System.out by a logger.(¦ğ°ÿÿÿÿÿ8ÉÒ»£ş1J$4ab542e2-6641-4a18-ab6f-bff08f1a3ef4
