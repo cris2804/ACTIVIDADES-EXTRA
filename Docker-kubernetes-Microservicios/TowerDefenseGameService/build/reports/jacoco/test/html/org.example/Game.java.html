@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Game.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pc-4</a> &gt; <a href="index.source.html" class="el_package">org.example</a> &gt; <span class="el_source">Game.java</span></div><h1>Game.java</h1><pre class="source lang-java linenums">package org.example;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Game {
+    private Map map;
+    private Player player;
+    private List&lt;Wave&gt; waves;
+    private List&lt;Tower&gt; towers;
+    private int currentWaveIndex;
+    private boolean gameRunning;
+
+<span class="nc" id="L15">    public Game() {</span>
+<span class="nc" id="L16">        this.map = new Map();</span>
+<span class="nc" id="L17">        this.player = new Player();</span>
+<span class="nc" id="L18">        this.waves = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L19">        this.towers = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L20">        this.currentWaveIndex = 0;</span>
+<span class="nc" id="L21">        this.gameRunning = true;</span>
+<span class="nc" id="L22">        initializeGame();</span>
+<span class="nc" id="L23">    }</span>
+
+    private void initializeGame() {
+<span class="nc" id="L26">        this.waves.add(new Wave(1));</span>
+<span class="nc" id="L27">    }</span>
+
+    public void start() {
+<span class="nc" id="L30">        Scanner scanner = new Scanner(System.in);</span>
+
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        while (gameRunning) {</span>
+<span class="nc" id="L33">            System.out.println(&quot;Estado del juego:&quot;);</span>
+<span class="nc" id="L34">            map.printMap(towers, getCurrentEnemies());</span>
+<span class="nc" id="L35">            System.out.println(&quot;PuntuaciÃ³n: &quot; + player.getScore());</span>
+<span class="nc" id="L36">            System.out.println(&quot;Vida de la base: &quot; + player.getBaseHealth());</span>
+<span class="nc" id="L37">            System.out.println(&quot;Ingrese comando (PLACE_TOWER tipo x y / START_WAVE / EXIT):&quot;);</span>
+<span class="nc" id="L38">            String command = scanner.nextLine();</span>
+<span class="nc" id="L39">            processCommand(command);</span>
+
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            if (player.getBaseHealth() &lt;= 0) {</span>
+<span class="nc" id="L42">                gameRunning = false;</span>
+<span class="nc" id="L43">                System.out.println(&quot;Juego terminado. La base ha sido destruida.&quot;);</span>
+            }
+
+            // Actualizamos el estado del juego para que los enemigos se muevan
+<span class="nc" id="L47">            updateGameState();</span>
+<span class="nc" id="L48">        }</span>
+
+<span class="nc" id="L50">        scanner.close();</span>
+<span class="nc" id="L51">    }</span>
+
+    private void processCommand(String command) {
+<span class="nc" id="L54">        String[] parts = command.split(&quot; &quot;);</span>
+<span class="nc bnc" id="L55" title="All 4 branches missed.">        switch (parts[0]) {</span>
+            case &quot;PLACE_TOWER&quot;:
+<span class="nc" id="L57">                String type = parts[1];</span>
+<span class="nc" id="L58">                int x = Integer.parseInt(parts[2]);</span>
+<span class="nc" id="L59">                int y = Integer.parseInt(parts[3]);</span>
+<span class="nc" id="L60">                placeTower(type, x, y);</span>
+<span class="nc" id="L61">                break;</span>
+            case &quot;START_WAVE&quot;:
+<span class="nc" id="L63">                startWave();</span>
+<span class="nc" id="L64">                break;</span>
+            case &quot;EXIT&quot;:
+<span class="nc" id="L66">                gameRunning = false;</span>
+<span class="nc" id="L67">                break;</span>
+            default:
+<span class="nc" id="L69">                System.out.println(&quot;Comando no reconocido.&quot;);</span>
+        }
+<span class="nc" id="L71">    }</span>
+
+    private List&lt;Enemy&gt; getCurrentEnemies() {
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        if (currentWaveIndex &lt; waves.size()) {</span>
+<span class="nc" id="L75">            return waves.get(currentWaveIndex).getEnemies();</span>
+        }
+<span class="nc" id="L77">        return new ArrayList&lt;&gt;(); // Retorna una lista vacÃ­a si no hay mÃ¡s oleadas</span>
+    }
+
+    public void startWave() {
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        if (currentWaveIndex &lt; waves.size()) {</span>
+<span class="nc" id="L82">            Wave currentWave = waves.get(currentWaveIndex);</span>
+<span class="nc" id="L83">            currentWave.spawnEnemies(map, player);</span>
+        }
+<span class="nc" id="L85">    }</span>
+
+    public void updateGameState() {
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        if (currentWaveIndex &lt; waves.size()) {</span>
+<span class="nc" id="L89">            Wave currentWave = waves.get(currentWaveIndex);</span>
+<span class="nc" id="L90">            currentWave.moveEnemies(map, player);</span>
+<span class="nc" id="L91">            map.attackEnemies(towers, currentWave.getEnemies());</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">            if (currentWave.allEnemiesDefeated()) {</span>
+<span class="nc" id="L93">                currentWaveIndex++;</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">                if (currentWaveIndex % 5 == 0) {</span>
+<span class="nc" id="L95">                    waves.add(new Wave(currentWaveIndex + 1));</span>
+                }
+            }
+        }
+<span class="nc" id="L99">    }</span>
+
+    public void placeTower(String type, int x, int y) {
+        TowerFactory factory;
+<span class="nc bnc" id="L103" title="All 4 branches missed.">        switch (type) {</span>
+            case &quot;Cannon&quot;:
+<span class="nc" id="L105">                factory = new CannonTowerFactory();</span>
+<span class="nc" id="L106">                break;</span>
+            case &quot;Laser&quot;:
+<span class="nc" id="L108">                factory = new LaserTowerFactory();</span>
+<span class="nc" id="L109">                break;</span>
+            case &quot;Arrow&quot;:
+<span class="nc" id="L111">                factory = new ArrowTowerFactory();</span>
+<span class="nc" id="L112">                break;</span>
+            default:
+<span class="nc" id="L114">                System.out.println(&quot;Tipo de torre no reconocido.&quot;);</span>
+<span class="nc" id="L115">                return;</span>
+        }
+<span class="nc" id="L117">        Tower tower = factory.createTower();</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if (map.isValidPosition(x, y)) {</span>
+<span class="nc" id="L119">            tower.setPosition(x, y);</span>
+<span class="nc" id="L120">            towers.add(tower);</span>
+<span class="nc" id="L121">            map.placeTower(tower, x, y);</span>
+        } else {
+<span class="nc" id="L123">            System.out.println(&quot;PosiciÃ³n no vÃ¡lida para colocar una torre.&quot;);</span>
+        }
+<span class="nc" id="L125">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
