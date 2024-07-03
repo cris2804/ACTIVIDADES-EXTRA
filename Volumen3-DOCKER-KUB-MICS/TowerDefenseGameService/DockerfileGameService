@@ -1,0 +1,15 @@
+# Utiliza una imagen base con OpenJDK 17 (version que uso para el proyecto)
+FROM openjdk:17
+
+# Crea y cambia el directorio /app
+WORKDIR /app
+
+# Copia todos los archivos del directorio actual al directorio de trabajo en el contenedor
+COPY . /app
+
+# Compila el archivo GameService.java
+RUN chmod +x ./gradlew build
+
+# Define el comando predeterminado para ejecutar el servicio
+CMD ["java","-cp","src/main/java/org/example/main" ,"GameService"]
+

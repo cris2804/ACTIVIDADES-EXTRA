@@ -1,0 +1,47 @@
+version: '2.26.1'
+
+services:
+  game:
+    build:
+      context: .
+      dockerfile: DockerfileGameService
+    networks:
+      - game-network
+    volumes:
+      - game-data:/app/data
+
+  map:
+    build:
+      context: .
+      dockerfile: DockerfileMapService
+    networks:
+      - game-network
+
+  player:
+    build:
+      context: .
+      dockerfile: DockerfilePlayerService
+    networks:
+      - game-network
+
+  tower:
+    build:
+      context: .
+      dockerfile: DockerfileTowerService
+    networks:
+      - game-network
+
+  wave:
+    build:
+      context: .
+      dockerfile: DockerfileWaveService
+    networks:
+      - game-network
+
+networks:
+  game-network:
+    driver: bridge
+
+volumes:
+  game-data:
+    driver: local
