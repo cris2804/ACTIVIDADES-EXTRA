@@ -17,7 +17,7 @@ Play with Kubernetes Classroom es una plataforma de Docker que permite obtener e
 Nos dirigimos al laboratorio Kubernets for begiineners: [link del laboratorio](https://training.play-with-kubernetes.com/kubernetes-workshop/)
 
 
-![Descripcion](Imagenes/imagen1.png)
+![Descripcion](Imagenes/Untitled%201.png)
 
 ## Introducción
 
@@ -34,8 +34,8 @@ Ahora ejecutamos el comando ls , vemos que tiene el archivo anaconda-ks.cfg
 ls
 ```
 
-![Descripcion](Imagenes/imagen2.png)
-![Descripcion](Imagenes/imagen3.png)
+![Descripcion](Imagenes/Untitled%202.png)
+![Descripcion](Imagenes/Untitled%203.png)
 
 ### Primer paso : Iniciar el Clúster
 
@@ -132,7 +132,7 @@ kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$
 
 Al ejecutar este comando en la terminal del nodo 1 obtengo la siguiente salida:
 
-![Descripcion](Imagenes/imagen4.png)
+![Descripcion](Imagenes/Untitled%204.png)
 
 Explicacion:
 
@@ -175,7 +175,7 @@ Explicacion:
 
 El taller tiene una aplicación de ejemplo para partes del taller. La aplicación está en el repositorio `dockercoins`.
 
-![Descripcion](Imagenes/imagen5.png)
+![Descripcion](Imagenes/Untitled%205.png)
 
 Explicacion:
 - El comando `git clone` se usa para clonar un repositorio Git desde la URL proporcionada. En este caso, se está clonando el repositorio `dockercoins` desde `https://github.com/dockersamples/dockercoins`. La salida muestra el progreso del clonado, incluyendo la enumeración de objetos, el conteo y compresión de objetos, y finalmente la recepción de los objetos con éxito. 
@@ -198,7 +198,7 @@ Utilizo Compose para construir y ejecutar todos los contenedores:
 docker-compose up
 ```
 
-![Descripcion](Imagenes/imagen7.png)
+![Descripcion](Imagenes/Untitled%207.png)
 
 Explicacion: 
 - Cuando intento ejecutar `docker-compose up`, surge un problema con el contenedor `worker_1`, el cual no puede resolver el nombre `hasher` para establecer una conexión HTTP en el puerto 80. Este error apunta a dificultades en la resolución de nombres dentro de la red de contenedores. No logre resolver ese problema tampoco, voy a continuar el taller basandome netamente en lo que dice el taller con recpeto a la ejecucion de esta aplicacion.
@@ -217,7 +217,7 @@ El contenedor de la interfaz web deberia ofrecer un panel de control accesible. 
 
 Antes de seguir, apaguemos todo presionando Ctrl-C.
 
-![Descripcion](Imagenes/imagen8.png)
+![Descripcion](Imagenes/Untitled%208.png)
 
 ### Conceptos de Kubernetes
 
@@ -286,7 +286,7 @@ Kubectl es la herramienta principal que utilizaremos para interactuar con Kubern
 
 Utilizo `kubectl get` para explorar los recursos de nodo en el clúster Kubernetes. 
 
-![Descripcion](Imagenes/imagen9.png)
+![Descripcion](Imagenes/Untitled%209.png)
 
 Explicacion:
 - Cuando ejecuto `kubectl get node`, obtengo una lista de nodos en el clúster Kubernetes. En este caso, los nodos `node1` y `node2` están etiquetados como "NotReady", lo que indica que no están completamente disponibles para ejecutar cargas de trabajo. Ambos nodos tienen el rol de "control-plane" y están ejecutando la versión `v1.27.2` de Kubernetes. 
@@ -296,8 +296,8 @@ Puedo obtener esta información de varias maneras equivalentes:
 - `kubectl get no`
 - `kubectl get nodes`
 
-![Descripcion](Imagenes/imagen10.png)
-![Descripcion](Imagenes/imagen11.png)
+![Descripcion](Imagenes/Untitled%2010.png)
+![Descripcion](Imagenes/Untitled%2011.png)
 
 #### Obtención de salida en formato legible por máquina
 
@@ -308,14 +308,14 @@ Puedo obtener esta información de varias maneras equivalentes:
   kubectl get nodes -o wide
   ```
 
-![Descripcion](Imagenes/imagen12.png)
+![Descripcion](Imagenes/Untitled%2012.png)
 
 Explicacion:
 - El comando muestra una lista detallada de los nodos en el clúster, incluyendo su estado, roles, edad, versión de Kubernetes, direcciones IP internas y externas, imagen del sistema operativo, versión del kernel y el runtime de contenedores. Se observa que ambos nodos `node1` y `node2` están en estado `NotReady`, con IPs internas `192.168.0.22` y `192.168.0.23`, ejecutando `CentOS Linux 7` y utilizando `containerd` como runtime de contenedores.
 
 - Reviso la informacion de los nodos en el cluster en formato yaml:
 
-![Descripcion](Imagenes/imagen13.png)
+![Descripcion](Imagenes/Untitled%2013.png)
 
 ```sh
 [node1 ~]$ kubectl get no -o yaml
@@ -600,14 +600,14 @@ Un servicio en Kubernetes es un punto de conexión estable para conectar con alg
 kubectl get services
 ```
 
-![Descripcion](Imagenes/imagen14.png)
+![Descripcion](Imagenes/Untitled%2014.png)
 
 o simplemente
 ```bash
 kubectl get svc
 ```
 
-![Descripcion](Imagenes/imagen15.png)
+![Descripcion](Imagenes/Untitled%2015.png)
 
 Explicacion:
 - Ambos comandos muestran los servicios en el clúster de Kubernetes. En este caso, hay un servicio llamado `kubernetes` de tipo `ClusterIP` con la IP `10.96.0.1`, sin una IP externa asignada, que está escuchando en el puerto 443/TCP y ha estado activo durante 20 minutos.
@@ -621,7 +621,7 @@ Los servicios ClusterIP son internos y solo están disponibles dentro del clúst
   curl -k https://10.96.0.1
   ```
 
-![Descripcion](Imagenes/imagen16.png)
+![Descripcion](Imagenes/Untitled%2016.png)
 
 Explicacion:
 - El comando `curl -k https://10.96.0.1` intenta acceder al servicio de Kubernetes en la IP del clúster. La respuesta es un mensaje de error JSON indicando que el acceso está prohibido. 
@@ -634,7 +634,7 @@ Los contenedores se manipulan a través de pods, que son grupos de contenedores 
 kubectl get pods
 ```
 
-![Descripcion](Imagenes/imagen17.png)
+![Descripcion](Imagenes/Untitled%2017.png)
 
 Explicacion:
 - El comando `kubectl get pods` muestra que no hay recursos, es decir, no hay pods actualmente en el namespace predeterminado de Kubernetes.
@@ -647,12 +647,12 @@ Los namespaces permiten la segregación de recursos. Para listar los namespaces 
 kubectl get namespaces
 ```
 
-![Descripcion](Imagenes/imagen18.png)
+![Descripcion](Imagenes/Untitled%2018.png)
 o
 ```bash
 kubectl get ns
 ```
-![Descripcion](Imagenes/imagen19.png)
+![Descripcion](Imagenes/Untitled%2019.png)
 
 Explicacion:
 - Ambos comandos muestran una lista de namespaces en el clúster de Kubernetes, indicando que los namespaces `default`, `kube-node-lease`, `kube-public` y `kube-system` están activos y tienen 25 minutos de existencia.
@@ -665,7 +665,7 @@ Tambien puedo cambiar al namespace deseado usando la opción `-n`:
 kubectl -n kube-system get pods
 ```
 
-![Descripcion](Imagenes/imagen20.png)
+![Descripcion](Imagenes/Untitled%2020.png)
 
 Explicacion:
 - El comando muestra el estado de los pods en el namespace `kube-system`. Los pods `coredns-5d78c9869d-j2vmr` y `coredns-5d78c9869d-pfwcb` están en estado pendiente, mientras que otros pods esenciales como `etcd-node1`, `kube-apiserver-node1`, `kube-controller-manager-node1`, `kube-proxy-9dqgb`, `kube-proxy-gdsnw` y `kube-scheduler-node1` están en estado de ejecucion sin reinicios y tienen 26 minutos de actividad.
@@ -682,7 +682,7 @@ Para ejecutar un pod inicial y verificar los recursos creados:
 kubectl run pingpong --image alpine ping 8.8.8.8
 ```
 
-![Descripcion](Imagenes/imagen21.png)
+![Descripcion](Imagenes/Untitled%2021.png)
 
 Explicacion:
 
@@ -698,7 +698,7 @@ Enumero la mayoría de los tipos de recursos:
 kubectl get all
 ```
 
-![Descripcion](Imagenes/imagen22.png)
+![Descripcion](Imagenes/Untitled%2022.png)
 
 Explicacion:
 - El comando intenta mostrar los registros del deployment llamado `pingpong`, pero devuelve un error indicando que el deployment no fue encontrado en el clúster.
@@ -717,7 +717,7 @@ Comando:
 kubectl logs deploy/pingpong
 ```
 
-![Descripcion](Imagenes/imagen23.png)
+![Descripcion](Imagenes/Untitled%2023.png)
 
 Explicacion:
 - El comando intenta mostrar los registros del deployment llamado `pingpong`, pero devuelve un error indicando que el deployment no fue encontrado en el clúster.
@@ -729,7 +729,7 @@ Similar a `docker logs`, `kubectl logs` admite opciones como `-f/--follow` para 
 kubectl logs deploy/pingpong --tail 1 --follow
 ```
 
-![Descripcion](Imagenes/imagen24.png)
+![Descripcion](Imagenes/Untitled%2024.png)
 
 Explicacion:
 - El comando intenta mostrar los registros del deployment llamado `pingpong`, especificando que solo se muestre la última línea y que se sigan los registros en tiempo real. Sin embargo, devuelve un error indicando que el deployment no fue encontrado en el clúster. 
@@ -741,7 +741,7 @@ Podemos escalar los contenedores (o pods) usando `kubectl scale`. Por ejemplo, `
 kubectl scale deploy/pingpong --replicas 8
 ```
 
-![Descripcion](Imagenes/imagen25.png)
+![Descripcion](Imagenes/Untitled%2025.png)
 
 Explicacion:
 - El comando intenta escalar el deployment llamado `pingpong` a 8 réplicas, pero devuelve un error indicando que no se encontraron objetos válidos para escalar. 
@@ -753,7 +753,7 @@ El `Deployment` `pingpong` supervisa su `Replica Set`, asegurando que el número
 kubectl get pods -w
 ```
 
-![Descripcion](Imagenes/imagen26.png)
+![Descripcion](Imagenes/Untitled%2026.png)
 
 Explicacion:
 
@@ -762,7 +762,7 @@ Explicacion:
 ```
 kubectl delete pod pingpong-yyyy
 ```
-![Descripcion](Imagenes/imagen27.png)
+![Descripcion](Imagenes/Untitled%2027.png)
 
 Explicacion:
 - El comando intenta eliminar un pod específico llamado `pingpong-yyyy`. Pero, el error "Error from server (NotFound): pods 'pingpong-yyyy' not found" indica que no se encontró ningún pod con ese nombre en el clúster Kubernetes. 
@@ -777,7 +777,7 @@ Al especificar el nombre de un `Deployment`, `kubectl logs` muestra los registro
 kubectl logs -l run=pingpong --tail 1
 ```
 
-![Descripcion](Imagenes/imagen28.png)
+![Descripcion](Imagenes/Untitled%2028.png)
 
 Explicacion:
 - El comando intenta mostrar los logs del último contenedor en ejecución que tenga la etiqueta `run=pingpong`. Pero, como no se muestra ningún resultado después de ejecutar el comando, esto podría indicar que no hay pods actualmente en ejecución con esa etiqueta específica (`run=pingpong`). 
@@ -789,7 +789,7 @@ Para limpiar un despliegue, podemos eliminar con `kubectl delete deploy/pingpong
 kubectl delete deploy/pingpong
 ```
 
-![Descripcion](Imagenes/imagen29.png)
+![Descripcion](Imagenes/Untitled%2029.png)
 
 Explicacion:
 - El comando intenta eliminar el deployment llamado "pingpong", pero devuelve un error indicando que no se encontró el deployment con ese nombre. Esto podría ocurrir si el deployment "pingpong" no existe en el namespace actual o si lo especifique incorrectamente. 
@@ -807,14 +807,14 @@ Para exponer un despliegue, puedo crear un servicio `ClusterIP` predeterminado u
 kubectl expose deploy/elastic --port 9200
 ```
 
-![Descripcion](Imagenes/imagen30.png)
+![Descripcion](Imagenes/Untitled%2030.png)
 
 Explicacion:
 - El comando intenta exponer el servicio asociado al deployment llamado "elastic", pero devuelve un error indicando que no se encontró el deployment con ese nombre. 
 
 dirección IP que se debio asignar:
 
-![Descripcion](Imagenes/imagen31.png)
+![Descripcion](Imagenes/Untitled%2031.png)
 
 Explicacion:
 - El comando muestra una lista de servicios desplegados en el cluster Kubernetes actual. En este caso, solo se muestra el servicio `kubernetes`, que es un servicio interno del cluster utilizado para la comunicación interna entre los componentes de Kubernetes. 
@@ -829,7 +829,7 @@ Envio algunas solicitudes HTTP a los pods de ElasticSearch:
 IP=$(kubectl get svc elastic -o go-template --template '{{ .spec.clusterIP }}')
 ```
 
-![Descripcion](Imagenes/imagen32.png)
+![Descripcion](Imagenes/Untitled%2032.png)
 
 Explicacion:
 - El comando intenta obtener detalles del servicio llamado "elastic" en el cluster Kubernetes, pero devuelve un error indicando que el servicio no fue encontrado. Esto significa que no existe un servicio llamado "elastic" actualmente desplegado en el namespace o contexto de Kubernetes desde donde se ejecutó el comando. 
@@ -840,7 +840,7 @@ Trato de enviar algunas solicitudes:
 curl http://$IP:9200/
 ```
 
-![Descripcion](Imagenes/imagen33.png)
+![Descripcion](Imagenes/Untitled%2033.png)
 
 Explicacion:
 - El comando intenta hacer una solicitud HTTP al IP especificado en el entorno de Kubernetes, pero devuelve un error indicando que no se pudo resolver el host. 
@@ -852,7 +852,7 @@ Termino con el despliegue de ElasticSearch, así que voy a limpiarlo:
 kubectl delete deploy/elastic
 ```
 
-![Descripcion](Imagenes/imagen34.png)
+![Descripcion](Imagenes/Untitled%2034.png)
 
 Explicacion:
 - El comando intenta eliminar el deployment llamado "elastic", pero devuelve un error indicando que no se encontró ningún deployment con ese nombre. 
@@ -884,12 +884,12 @@ export USERNAME=TU_USUARIO
 pwd
 ```
 
-![Descripcion](Imagenes/imagen35.png)
+![Descripcion](Imagenes/Untitled%2035.png)
 
 Explicacion:
 - El comando establece una variable de entorno llamada `USERNAME` con el valor `davidreevesgoni`. La variable `USERNAME` estará disponible para cualquier comando o script que se ejecute en esa sesión de terminal, permitiendo que el valor `davidreevesgoni` sea utilizado como referencia en diversas operaciones dentro del entorno de trabajo actual.
 
-![Descripcion](Imagenes/imagen36.png)
+![Descripcion](Imagenes/Untitled%2036.png)
 
 Explicacion:
 - El comando `pwd` muestra la ruta completa del directorio actual en el cual se encuentra el usuario actualmente. En este caso, el resultado indica que el directorio actual es `/root`, que es el directorio raíz del usuario `root`. 
@@ -902,7 +902,7 @@ Docker Hub es el registro predeterminado para Docker. Los nombres de imagen en H
 
 Para usar Hub, debo asegurarme de tener una cuenta. Luego, escribere `docker login` en el terminal e inicio sesión con mi nombre de usuario y contraseña.
 
-![Descripcion](Imagenes/imagen67.png)
+![Descripcion](Imagenes/Untitled%2067.png)
 
 Explicacion:
 - Al ejecutar el comando `docker login`, inicié sesión con mi Docker ID para facilitar la descarga y subida de imágenes desde Docker Hub. Ingresé mi nombre de usuario y contraseña cuando se solicitó, y Docker validó estas credenciales. 
@@ -916,8 +916,8 @@ docker-compose -f dockercoins.yml build
 docker-compose -f dockercoins.yml push
 ```
 
-![Descripcion](Imagenes/imagen37.png)
-![Descripcion](Imagenes/imagen38.png)
+![Descripcion](Imagenes/Untitled%2037.png)
+![Descripcion](Imagenes/Untitled%2038.png)
 
 Explicacion:
 - Cuando se ejecuta estos comandos en el directorio actual (`./`), no lo encuentra y muestra un error de tipo `FileNotFoundError`. Esto indica que el archivo YAML necesario para la configuración de Docker Compose no está presente en el directorio desde donde se está ejecutando el comando. 
@@ -933,12 +933,12 @@ for SERVICE in hasher rng webui worker; do
 done
 ```
 
-![Descripcion](Imagenes/imagen39.png)
+![Descripcion](Imagenes/Untitled%2039.png)
 
 Explicacion:
 - Cuando se ejecuta el comando, se crea un nuevo pod en Kubernetes utilizando la imagen de Redis desde el registro de contenedores predeterminado. 
 
-![Descripcion](Imagenes/imagen40.png)
+![Descripcion](Imagenes/Untitled%2040.png)
 
 Explicacion:
 - Al ejecutar estos comandos, se están creando varios pods en Kubernetes de manera automatizada. 
@@ -946,7 +946,7 @@ Explicacion:
 #### ¿Está funcionando?
 Después de esperar a que se complete el despliegue, reviso los registros. Para ello utilizo `kubectl get deploy -w` para ver eventos de despliegue y `kubectl logs` para ver los registros de rng y worker.
 
-![Descripcion](Imagenes/imagen41.png)
+![Descripcion](Imagenes/Untitled%2041.png)
 
 Explicacion:
 - Al intentar obtener los logs de `deploy/rng` y `deploy/worker` utilizando el comando `kubectl logs`, se genera un error indicando que no se encontraron los deployments especificados. 
@@ -961,7 +961,7 @@ kubectl expose deployment rng --port 80
 kubectl expose deployment hasher --port 80
 ```
 
-![Descripcion](Imagenes/imagen42.png)
+![Descripcion](Imagenes/Untitled%2042.png)
 
 Explicacion:
 - Al intentar exponer los deployments `redis`, `rng`, y `hasher` utilizando el comando `kubectl expose deployment`, se genera un error indicando que no se encontraron los deployments especificados. 
@@ -973,7 +973,7 @@ El worker tiene un bucle infinito que se reintentará cada 10 segundos después 
 kubectl logs deploy/worker --follow
 ```
 
-![Descripcion](Imagenes/imagen43.png)
+![Descripcion](Imagenes/Untitled%2043.png)
 
 Explicacion:
 - Cuando intento ver los logs del deployment llamado `worker` utilizando `kubectl logs deploy/worker --follow`, recibo un error que indica que no se encontró el deployment con ese nombre en el clúster de Kubernetes. 
@@ -985,14 +985,14 @@ Ahora quiero acceder a la interfaz web. La expondre con un NodePort. Creo un ser
 kubectl create service nodeport webui --tcp=80 --node-port=30001
 ```
 
-![Descripcion](Imagenes/imagen44.png)
+![Descripcion](Imagenes/Untitled%2044.png)
 
 Explicacion:
 - Cuando ejecuto el comando, estoy creando un nuevo servicio llamado `webui` de tipo NodePort en Kubernetes. Este servicio expone el puerto 80 de los pods seleccionados por el selector predeterminado, permitiendo acceder a ellos desde fuera del clúster a través del puerto 30001 en cada nodo del clúster. 
 
 Verificar que el puerto que fue asignado:
 
-![Descripcion](Imagenes/imagen45.png)
+![Descripcion](Imagenes/Untitled%2045.png)
 
 #### Acceso a la interfaz web
 Ahora se deberia conectar cualquier nodo al puerto asignado para ver la interfaz web.
@@ -1019,9 +1019,9 @@ kubectl get deployments
 kubectl scale deploy/worker --replicas=10
 ```
 
-![Descripcion](Imagenes/imagen46.png)
+![Descripcion](Imagenes/Untitled%2046.png)
 
-![Descripcion](Imagenes/imagen47.png)
+![Descripcion](Imagenes/Untitled%2047.png)
 
 Explicacion:
 - Al ejecutar el comando, se indica que no se encontraron recursos en el namespace por defecto (`default`), lo que sugiere que no hay despliegues (deployments) activos en este momento en ese namespace.
@@ -1049,7 +1049,7 @@ Comienzo con el archivo YAML para el recurso `rng` actual.
 kubectl get deploy/rng -o yaml --export > rng.yml
 ```
 
-![Descripcion](Imagenes/imagen48.png)
+![Descripcion](Imagenes/Untitled%2048.png)
 
 Explicacion:
 - El comando intenta exportar la configuración del deployment llamado `rng` a un archivo YAML llamado `rng.yml`. Sin embargo, el error "unknown flag: --export" indica que la versión de `kubectl` utilizada no admite el flag `--export` en la operación `kubectl get`.
@@ -1070,7 +1070,7 @@ Intento crear mi nuevo recurso:
 kubectl apply -f rng.yml
 ```
 
-![Descripcion](Imagenes/imagen66.png)
+![Descripcion](Imagenes/Untitled%2066.png)
 
 Explicacion:
 - El comando intenta aplicar los recursos definidos en el archivo YAML rng.yml, pero devuelve un error indicando que no se encontraron objetos para aplicar.
@@ -1083,7 +1083,7 @@ Puedo tratar de decirle Kubernetes que ignore estos errores y lo intente de todo
 kubectl apply -f rng.yml --validate=false
 ```
 
-![Descripcion](Imagenes/imagen49.png)
+![Descripcion](Imagenes/Untitled%2049.png)
 
 Explicacion:
 - El comando intenta aplicar la configuración contenida en el archivo `rng.yml` al cluster Kubernetes, deshabilitando la validación de los recursos. El error "no objects passed to apply" indica que el archivo `rng.yml` no contiene ningún objeto Kubernetes válido para aplicar.
@@ -1096,7 +1096,7 @@ Explicacion:
 kubectl get all
 ```
 
-![Descripcion](Imagenes/imagen50.png)
+![Descripcion](Imagenes/Untitled%2050.png)
 
 Explicacion:
 - El comando muestra el estado actual de todos los recursos desplegados en el clúster Kubernetes. En la salida proporcionada, se observa que varios pods (`hasher`, `pingpong`, `redis`, `rng`, `webui`, `worker`) están en estado "Pending", lo que indica que aún no se han programado en ningún nodo del clúster para su ejecución. 
@@ -1113,7 +1113,7 @@ Verifico los registros de todos estos pods `rng`. Todos estos pods tienen una et
 kubectl logs -l run=rng --tail 1
 ```
 
-![Descripcion](Imagenes/imagen51.png)
+![Descripcion](Imagenes/Untitled%2051.png)
 
 Explicacion:
 - El comando intenta mostrar los registros del último contenedor que ejecutaba la etiqueta `run=rng`. Sin embargo, en este caso, no se encontraron recursos en el espacio de nombres predeterminado que coincidan con esa etiqueta, lo que sugiere que no hay ningún pod actualmente desplegado que tenga esa etiqueta específica.
@@ -1140,7 +1140,7 @@ Muestro información detallada sobre el despliegue `rng`:
 kubectl describe deploy rng
 ```
 
-![Descripcion](Imagenes/imagen52.png)
+![Descripcion](Imagenes/Untitled%2052.png)
 
 Explicacion:
 - El comando intenta describir los detalles del despliegue llamado `rng`. Pero presenta un error un error que indica que no se pudo encontrar ningún despliegue con el nombre "rng" en el clúster. 
@@ -1151,7 +1151,7 @@ Muestro información detallada sobre el replicaset `rng-yyyy`:
 kubectl describe rs rng-yyyy
 ```
 
-![Descripcion](Imagenes/imagen53.png)
+![Descripcion](Imagenes/Untitled%2053.png)
 
 Explicacion:
 - El comando intenta describir los detalles de un conjunto de réplicas con el nombre "rng-yyyy". Pero presenta un error que indica que no se pudo encontrar ningún conjunto de réplicas con ese nombre en el clúster. 
@@ -1186,7 +1186,7 @@ Actualizo el daemon set para agregar `isactive: "yes"` a la etiqueta del selecto
 kubectl edit daemonset rng
 ```
 
-![Descripcion](Imagenes/imagen54.png)
+![Descripcion](Imagenes/Untitled%2054.png)
 
 Explicacion:
 - El comando intenta abrir y editar el daemonset llamado "rng". Pero presenta un error indicando que no se pudo encontrar ningún daemonset con ese nombre en el clúster actual. 
@@ -1195,7 +1195,7 @@ Explicacion:
 kubectl edit service rng
 ```
 
-![Descripcion](Imagenes/imagen55.png)
+![Descripcion](Imagenes/Untitled%2055.png)
 
 Explicacion:
 - El comando intenta abrir y editar el servicio llamado "rng", pero el error indica que no se pudo encontrar ningún servicio con ese nombre en el clúster actual. 
@@ -1208,7 +1208,7 @@ Verifico los registros de todos los pods `run=rng` para confirmar que solo 2 de 
 kubectl logs -l run=rng
 ```
 
-![Descripcion](Imagenes/imagen56.png)
+![Descripcion](Imagenes/Untitled%2056.png)
 
 Explicacion:
 - El comando intenta mostrar los registros de los pods que tienen la etiqueta `run=rng`, pero no se encontraron recursos que coincidan con esa etiqueta en el espacio de nombres predeterminado. 
@@ -1221,7 +1221,7 @@ Miro los pods que tengo ahora:
 kubectl get pods
 ```
 
-![Descripcion](Imagenes/imagen57.png)
+![Descripcion](Imagenes/Untitled%2057.png)
 
 #### Recuperándonos de un despliegue fallido
 
@@ -1236,7 +1236,7 @@ kubectl rollout undo deploy worker
 kubectl rollout status deploy worker
 ```
 
-![Descripcion](Imagenes/imagen65.png)
+![Descripcion](Imagenes/Untitled%2065.png)
 
 Explicacion:
 - El comando intenta revertir un despliegue anterior del deployment llamado "worker", pero devuelve un error indicando que no se encontró el deployment especificado.
@@ -1255,7 +1255,7 @@ Podria usar `kubectl edit deployment worker`, pero también podria usar `kubectl
 
 Aplicar todos mis cambios y esperar a que surtan efecto:
 
-![Descripcion](Imagenes/imagen66.png)
+![Descripcion](Imagenes/Untitled%2066.png)
 
 Explicacion:
 - El comando está intentando aplicar los recursos definidos en el archivo rng.yml, pero el error indica que no se encontraron objetos válidos para aplicar en el archivo especificado.
